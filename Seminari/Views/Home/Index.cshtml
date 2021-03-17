@@ -1,8 +1,58 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<Seminari.Models.Seminar>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{ ViewData["Title"] = "Home Page"; }
+
+<div class="text-md-left">
+
+    <p>Dobrodošli na stranicu <strong>BazaSeminari!</strong> Ovdje možete pretražiti ponudu seminara:</p>
+
+    <form asp-controller="Home" asp-action="Index">
+        <label for="pretraga"><strong>Pretraga: </strong></label>
+        <input type="text" id="pretraga" name="pretraga" />
+        <input type="submit" value="Pretraži" />
+    </form>
+
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPredavac)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Predbiljezbas" asp-action="Odaberi">Odaberi</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPredavacNavigation.ImePrezime)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

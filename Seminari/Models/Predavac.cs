@@ -15,7 +15,7 @@ namespace Seminari.Models
         public int IdPredavac { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
-
+        public string ImePrezime { get => this.Ime + " " + this.Prezime; }
         public virtual ICollection<Seminar> Seminars { get; set; }
     }
 }

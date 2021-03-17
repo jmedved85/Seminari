@@ -9,8 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Seminari.Models;
 
 namespace Seminari.Controllers
-{
-    [Authorize]
+{    
     public class PredbiljezbasController : Controller
     {
         private readonly BazaSeminariContext _context;
@@ -19,6 +18,8 @@ namespace Seminari.Controllers
         {
             _context = context;
         }
+
+        [Authorize]
 
         // GET: Predbiljezbas
         public async Task<IActionResult> Index()
@@ -68,6 +69,36 @@ namespace Seminari.Controllers
             }
             ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv", predbiljezba.IdSeminar);
             return View(predbiljezba);
+        }
+
+
+        // ODABERI
+
+        public IActionResult Odaberi()
+        {
+            ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Odaberi(Predbiljezba pr)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(pr);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            var seminar = pr.IdSeminarNavigation.Naziv;
+            var ime = pr.Ime;
+            var prezime = pr.Prezime;
+            var adresa = pr.Adresa;
+            var email = pr.Email;
+            var telefon = pr.Telefon;
+
+            return View(pr);
         }
 
         // GET: Predbiljezbas/Edit/5

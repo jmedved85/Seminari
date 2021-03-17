@@ -166,3 +166,4 @@ C:\Users\jmedv\OneDrive\Dokumenti\Repos\Seminari\Seminari\obj\Debug\net5.0\Razor
 C:\Users\jmedv\OneDrive\Dokumenti\Repos\Seminari\Seminari\obj\Debug\net5.0\Razor\Views\Predbiljezbas\Index.cshtml.g.cs
 C:\Users\jmedv\OneDrive\Dokumenti\Repos\Seminari\Seminari\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\jmedv\OneDrive\Dokumenti\Repos\Seminari\Seminari\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\jmedv\OneDrive\Dokumenti\Repos\Seminari\Seminari\obj\Debug\net5.0\Razor\Views\Predbiljezbas\Odaberi.cshtml.g.cs

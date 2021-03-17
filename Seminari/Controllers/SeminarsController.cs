@@ -49,7 +49,7 @@ namespace Seminari.Controllers
         // GET: Seminars/Create
         public IActionResult Create()
         {
-            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "IdPredavac");
+            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "ImePrezime", "Prezime");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace Seminari.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "IdPredavac", seminar.IdPredavac);
+            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "ImePrezime", seminar.IdPredavac);
             return View(seminar);
         }
 
@@ -83,7 +83,7 @@ namespace Seminari.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "IdPredavac", seminar.IdPredavac);
+            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "ImePrezime", seminar.IdPredavac);
             return View(seminar);
         }
 
@@ -119,7 +119,7 @@ namespace Seminari.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "IdPredavac", seminar.IdPredavac);
+            ViewData["IdPredavac"] = new SelectList(_context.Predavacs, "IdPredavac", "ImePrezime", seminar.IdPredavac);
             return View(seminar);
         }
 
