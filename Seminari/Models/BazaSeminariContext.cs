@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Seminari.Models
 {
-    public partial class BazaSeminariContext : DbContext
+    public partial class BazaSeminariContext : IdentityDbContext
     {
         public BazaSeminariContext()
         {
@@ -33,6 +34,8 @@ namespace Seminari.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.HasAnnotation("Relational:Collation", "Croatian_CI_AS");
 
             modelBuilder.Entity<Predavac>(entity =>
