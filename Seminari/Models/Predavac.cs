@@ -4,7 +4,7 @@ using System.Collections.Generic;
 #nullable disable
 
 namespace Seminari.Models
-{
+{    
     public partial class Predavac
     {
         public Predavac()
