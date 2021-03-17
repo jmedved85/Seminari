@@ -14,6 +14,7 @@ namespace Seminari.Models
             Predbiljezbas = new HashSet<Predbiljezba>();
         }
 
+        [DisplayName("Seminar")]
         public int IdSeminar { get; set; }
         public string Naziv { get; set; }
         public string Opis { get; set; }
