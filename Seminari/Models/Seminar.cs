@@ -20,6 +20,7 @@ namespace Seminari.Models
         public string Opis { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}", ApplyFormatInEditMode = true)]
+        [DisplayName("Datum početka nastave")]
         [DataType(DataType.Date)]
         public DateTime? Datum { get; set; }
         public bool? Popunjen { get; set; }

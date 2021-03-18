@@ -20,7 +20,6 @@ namespace Seminari.Controllers
             this.signInManager = signInManager;
         }
 
-
         // ODJAVA
 
         [HttpPost]

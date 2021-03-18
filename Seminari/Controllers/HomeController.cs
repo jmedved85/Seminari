@@ -29,7 +29,7 @@ namespace Seminari.Controllers
                 rezultat = rezultat.Where(p => p.Naziv.Contains(pretraga));
             }
 
-            return View(await rezultat.ToListAsync());
+            return View(await rezultat.Include(s => s.IdPredavacNavigation).ToListAsync());
         }
 
         //private readonly ILogger<HomeController> _logger;
