@@ -4,15 +4,17 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Predbiljezba</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdPredbiljezba" />
+            <div class="form-group">
+                <label asp-for="IdSeminar" class="control-label"></label>
+                <select asp-for="IdSeminar" class="form-control" asp-items="ViewBag.IdSeminar"></select>
+                <span asp-validation-for="IdSeminar" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Ime" class="control-label"></label>
                 <input asp-for="Ime" class="form-control" />
@@ -22,6 +24,11 @@
                 <label asp-for="Prezime" class="control-label"></label>
                 <input asp-for="Prezime" class="form-control" />
                 <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datum" class="control-label"></label>
+                <input asp-for="Datum" class="form-control" />
+                <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Adresa" class="control-label"></label>
@@ -39,23 +46,17 @@
                 <span asp-validation-for="Telefon" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Datum" class="control-label"></label>
-                <input asp-for="Datum" class="form-control" />
-                <span asp-validation-for="Datum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdSeminar" class="control-label"></label>
-                <select asp-for="IdSeminar" class="form-control" asp-items="ViewBag.IdSeminar"></select>
-                <span asp-validation-for="IdSeminar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+                <label asp-for="Status" class="control-label"></label><br />
+                <input type="radio" asp-for="Status" id="prihvacen" value="prihvacen" />
+                <label for="prihvacen">Prihvaćen</label><br />
+                <input type="radio" asp-for="Status" id="odbijen" value="odbijen" />
+                <label for="prihvacen">Odbijen</label>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+                <input type="submit" value="Spremi" class="btn btn-primary" />
+                <input type="submit" value="Obriši" class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.IdPredbiljezba"/>
+            </div>            
         </form>
     </div>
 </div>

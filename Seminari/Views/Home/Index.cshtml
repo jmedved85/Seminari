@@ -11,6 +11,7 @@
         <input type="text" id="pretraga" name="pretraga" />
         <input type="submit" value="Pretraži" />
     </form>
+    <br />
 
 </div>
 
@@ -34,11 +35,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderBy(item => item.Naziv))
         {
             <tr>
-                <td>
-                    <a asp-controller="Predbiljezbas" asp-action="Odaberi">Odaberi</a>
+                <td>                    
+                    <a asp-controller="Predbiljezbas" asp-action="Odaberi" asp-route-Id=@item.IdSeminar>Odaberi</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Naziv)

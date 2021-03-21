@@ -16,12 +16,14 @@ namespace Seminari.Models
 
         [DisplayName("Seminar")]
         public int IdSeminar { get; set; }
+
+        [Required]
         public string Naziv { get; set; }
         public string Opis { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}", ApplyFormatInEditMode = true)]
         [DisplayName("Datum početka nastave")]
-        [DataType(DataType.Date)]
+        // [DataType(DataType.Date)]
         public DateTime? Datum { get; set; }
         public bool? Popunjen { get; set; }
 

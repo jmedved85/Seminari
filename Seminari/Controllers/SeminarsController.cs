@@ -21,10 +21,20 @@ namespace Seminari.Controllers
         }
 
         // GET: Seminars
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pretraga)
         {
-            var bazaSeminariContext = _context.Seminars.Include(s => s.IdPredavacNavigation);
-            return View(await bazaSeminariContext.ToListAsync());
+            var rezultat = from r in _context.Seminars
+                           select r;
+
+            if (!string.IsNullOrEmpty(pretraga))
+            {
+                rezultat = rezultat.Where(p => p.Naziv.Contains(pretraga));
+            }
+
+            //var bazaSeminariContext = _context.Seminars.Include(s => s.IdPredavacNavigation);
+            //return View(await bazaSeminariContext.ToListAsync());
+
+            return View(await rezultat.Include(s => s.IdPredavacNavigation).ToListAsync());
         }
 
         // GET: Seminars/Details/5

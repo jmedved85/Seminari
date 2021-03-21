@@ -22,10 +22,22 @@ namespace Seminari.Controllers
         [Authorize]
 
         // GET: Predbiljezbas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pretraga)
         {
-            var bazaSeminariContext = _context.Predbiljezbas.Include(p => p.IdSeminarNavigation);
-            return View(await bazaSeminariContext.ToListAsync());
+            var rezultat = from r in _context.Predbiljezbas
+                           select r;
+
+            if (!string.IsNullOrEmpty(pretraga))
+            {
+                rezultat = rezultat.Where(p => p.Ime.Contains(pretraga) 
+                    || p.Prezime.Contains(pretraga) 
+                    || p.IdSeminarNavigation.Naziv.Contains(pretraga));                   
+            }
+
+           // var bazaSeminariContext = _context.Predbiljezbas.Include(p => p.IdSeminarNavigation);
+           // return View(await bazaSeminariContext.ToListAsync());
+
+            return View(await rezultat.Include(s => s.IdSeminarNavigation).ToListAsync());
         }
 
         // GET: Predbiljezbas/Details/5
@@ -74,15 +86,33 @@ namespace Seminari.Controllers
 
         // ODABERI
 
-        public IActionResult Odaberi()
+        public IActionResult Odaberi(int? id)
         {
-            ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv");
-            return View();
+            ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv", id);
+            
+            //var odabir = _context.Predbiljezbas.Where(p => p.IdSeminar == id).FirstOrDefault();
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //ViewBag.Odabir = odabir;
+
+            //var seminar = _context.Seminars                
+            //  .FirstOrDefault(m => m.IdSeminar == id);
+
+            //if (seminar == null)
+            //{
+            //    return NotFound();
+            //}           
+
+
+            return View();         
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Odaberi(Predbiljezba pr)
+        public async Task<IActionResult> Odaberi([Bind("IdSeminar, Ime, Prezime, Adresa, Email, Telefon")] Predbiljezba pr)
         {
             if (ModelState.IsValid)
             {
@@ -90,13 +120,6 @@ namespace Seminari.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            var seminar = pr.IdSeminarNavigation.Naziv;
-            var ime = pr.Ime;
-            var prezime = pr.Prezime;
-            var adresa = pr.Adresa;
-            var email = pr.Email;
-            var telefon = pr.Telefon;
 
             return View(pr);
         }

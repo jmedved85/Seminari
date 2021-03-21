@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<Seminari.Models.Predavac>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lecturers";
 }
 
-<h1>Popis predavača</h1>
+<h5>Popis predavača</h5>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<br />
+
+<form>
+    <input type="submit" value="Novi" class="btn btn-primary" asp-controller="Predavacs" asp-action="Create" />
+</form>
+
+<br />
+
 <table class="table">
     <thead>
         <tr>
@@ -22,7 +27,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(item => item.Prezime)) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Ime)
@@ -31,9 +36,8 @@
                 @Html.DisplayFor(modelItem => item.Prezime)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPredavac">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPredavac">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPredavac">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdPredavac">Uredi</a> |                
+                <a asp-action="Delete" asp-route-id="@item.IdPredavac">Obriši</a>
             </td>
         </tr>
 }
