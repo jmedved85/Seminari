@@ -21,9 +21,18 @@ namespace Seminari.Controllers
         }
 
         // GET: Predavacs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pretraga)
         {
-            return View(await _context.Predavacs.ToListAsync());
+            var rezultat = from r in _context.Predavacs
+                           select r;
+
+            if (!string.IsNullOrEmpty(pretraga))
+            {
+                rezultat = rezultat.Where(p => p.Ime.Contains(pretraga)
+                    || p.Prezime.Contains(pretraga));
+            }
+     
+            return View(await rezultat.ToListAsync());
         }
 
         // GET: Predavacs/Details/5

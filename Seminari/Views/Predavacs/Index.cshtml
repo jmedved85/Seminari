@@ -4,12 +4,16 @@
     ViewData["Title"] = "Lecturers";
 }
 
-<h5>Popis predavača</h5>
+<form asp-controller="Predavacs" asp-action="Index">
+    <label for="pretraga"><strong>Pretraga: </strong></label>
+    <input type="text" id="pretraga" name="pretraga" />
+    <input type="submit" value="Pretraži" />
+</form>
 
 <br />
 
 <form>
-    <input type="submit" value="Novi" class="btn btn-primary" asp-controller="Predavacs" asp-action="Create" />
+    <input type="submit" value="Novi unos" class="btn btn-primary" asp-controller="Predavacs" asp-action="Create" />
 </form>
 
 <br />
@@ -27,19 +31,20 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.OrderBy(item => item.Prezime)) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prezime)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPredavac">Uredi</a> |                
-                <a asp-action="Delete" asp-route-id="@item.IdPredavac">Obriši</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.OrderBy(item => item.Prezime))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPredavac">Uredi</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdPredavac">Obriši</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

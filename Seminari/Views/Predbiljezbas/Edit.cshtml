@@ -46,12 +46,13 @@
                 <span asp-validation-for="Telefon" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label><br />
-                <input type="radio" asp-for="Status" id="prihvacen" value="prihvacen" />
-                <label for="prihvacen">Prihvaćen</label><br />
-                <input type="radio" asp-for="Status" id="odbijen" value="odbijen" />
-                <label for="prihvacen">Odbijen</label>
+                <label asp-for="Status" class="control-label"></label>
+                <br />
+                <input type="radio" name="Status" value="prihvacen" checked="true" /> Prihvaćen
+                <input type="radio" name="Status" value="odbijen" checked="false" /> Odbijen
+                
                 <span asp-validation-for="Status" class="text-danger"></span>
+                           
             </div>
             <div class="form-group">
                 <input type="submit" value="Spremi" class="btn btn-primary" />
