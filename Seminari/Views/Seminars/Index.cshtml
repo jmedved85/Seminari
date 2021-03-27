@@ -18,7 +18,7 @@
 
 <br />
 
-<table class="table">
+<table class="table" style="width:auto">
     <thead>
         <tr>
             <th></th>
@@ -44,8 +44,8 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdSeminar">Uredi</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdSeminar">Obriši</a>                
+                <a asp-action="Edit" asp-route-id="@item.IdSeminar">Uredi</a> <br />
+                <a asp-action="Delete" asp-route-id="@item.IdSeminar"><span style="color:red">Obriši</span></a>                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Naziv)
@@ -53,17 +53,28 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Opis)
             </td>
-            <td>
+            <td style="width:150px">
                 @Html.DisplayFor(modelItem => item.Datum)
             </td>
             <td>                
-                @Html.DisplayFor(modelItem => item.Popunjen)
+                @if (item.Popunjen == true)
+                {
+                    <span style="color:red">Da</span>
+                }
+                else if (item.Popunjen == false)
+                {
+                    <span style="color:green">Ne</span>
+                }
+                else
+                {
+                    <span style="color: green">Ne</span>
+                }
             </td>
-            <td>
+            <td style="width:150px">
                 @Html.DisplayFor(modelItem => item.IdPredavacNavigation.ImePrezime)
             </td>
-            <td>
-                
+            <td style="width:150px">
+                @Html.DisplayFor(modelItem => item.Predbiljezbas)
             </td>
         </tr>
 }

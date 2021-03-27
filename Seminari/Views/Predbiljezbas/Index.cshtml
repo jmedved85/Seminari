@@ -9,6 +9,7 @@
     <input type="text" id="pretraga" name="pretraga" />
     <input type="submit" value="Pretraži" />
 </form>
+
 <br />
 
 <table class="table">
@@ -71,8 +72,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Telefon)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
+                <td>                    
+                    @if (item.Status == true) 
+                     {
+                         <span style="color:green">Prihvaćen</span>
+                     }
+                     else if (item.Status == false)
+                     {
+                          <span style="color:red">Odbijen</span>
+                     }
+                     else 
+                     {
+                          <span style="color:steelblue">Neobrađen</span>
+                     }
                 </td>
             </tr>
         }

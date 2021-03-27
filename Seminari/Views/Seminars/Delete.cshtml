@@ -29,8 +29,19 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Popunjen)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Popunjen)
+        <dd class="col-sm-10">
+            @if (Model.Popunjen == true)
+            {
+                <span style="color:red">Da</span>
+            }
+            else if (Model.Popunjen == false)
+            {
+                <span style="color:green">Ne</span>
+            }
+            else
+            {
+                <span style="color: green">Ne</span>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdPredavac)

@@ -47,23 +47,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
-                <br />
-                <input type="radio" name="Status" value="prihvacen" checked="true" /> Prihvaćen
-                <input type="radio" name="Status" value="odbijen" checked="false" /> Odbijen
-                
-                <span asp-validation-for="Status" class="text-danger"></span>
-                           
+                <div class="col-md-10">
+                    @Html.RadioButtonFor(x => x.Status, true) <span> Prihvaćen</span>
+                    @Html.RadioButtonFor(x => x.Status, false) <span> Odbijen</span>
+                </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Spremi" class="btn btn-primary" />
-                <input type="submit" value="Obriši" class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.IdPredbiljezba"/>
+                <input type="submit" value="Spremi" class="btn btn-primary" /> 
+                <input type="submit" value="Obriši" class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.IdPredbiljezba" />
             </div>            
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Natrag</a>
 </div>
 
 @section Scripts {

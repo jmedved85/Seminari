@@ -40,6 +40,18 @@ namespace Seminari.Controllers
             return View(await rezultat.Include(s => s.IdSeminarNavigation).ToListAsync());
         }
 
+        public async Task<IActionResult> Status(bool Status)
+        {
+            var rezultat = from r in _context.Predbiljezbas
+                           select r;
+
+            rezultat = rezultat.Where(p => p.Status == true
+                    || p.Status == false
+                    || p.Status == null);           
+
+            return RedirectToAction(nameof(Index));
+        }
+
         // GET: Predbiljezbas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -117,8 +129,9 @@ namespace Seminari.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(pr);
+                pr.Datum = DateTime.Now;
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
 
             return View(pr);
@@ -176,6 +189,7 @@ namespace Seminari.Controllers
             ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv", predbiljezba.IdSeminar);
             return View(predbiljezba);
         }
+  
 
         // GET: Predbiljezbas/Delete/5
         public async Task<IActionResult> Delete(int? id)

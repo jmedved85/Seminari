@@ -31,9 +31,8 @@ namespace Seminari.Models
         [DisplayName("Telefon:")]
         public string Telefon { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}", ApplyFormatInEditMode = true)]
-        // [DataType(DataType.Date)]
-        [DisplayName("Datum:")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}", ApplyFormatInEditMode = true)]        
+        [DisplayName("Datum:")]        
         public DateTime Datum { get; set; }
 
         [DisplayName("Seminar:")]

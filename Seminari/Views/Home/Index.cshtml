@@ -35,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.OrderBy(item => item.Naziv))
+        @foreach (var item in Model.OrderBy(item => item.Naziv).Where(item => item.Popunjen != true))
         {
             <tr>
                 <td>                    
