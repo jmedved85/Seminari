@@ -10,6 +10,14 @@
     <input type="submit" value="Pretraži" />
 </form>
 
+<form asp-controller="Predbiljezbas" asp-action="Index">
+    <label for="status"><strong>Status: </strong></label>
+    <input type="checkbox" id="status" name="status" value="true" /> <span style="color:green">Prihvaćen</span>
+    <input type="checkbox" id="status" name="status" value="false" /> <span style="color:red">Odbijen</span>
+    <input type="checkbox" id="status" name="status" value="null" /> <span style="color:steelblue">Neobrađen</span>
+    <input type="submit" value="Pretraži" />
+</form>
+
 <br />
 
 <table class="table">

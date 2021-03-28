@@ -26,7 +26,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdPredavac" class="control-label"></label>
-                <select asp-for="IdPredavac" class="form-control" asp-items="ViewBag.IdPredavac"></select>
+                <select asp-for="IdPredavac" class="form-control" asp-items="ViewBag.IdPredavac">
+                    <option value="none" selected disabled hidden>Odaberi</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Popunjen" class="control-label">Popunjen:</label>

@@ -41,7 +41,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(item => item.Naziv)) {
         <tr>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdSeminar">Uredi</a> <br />
@@ -74,7 +74,7 @@
                 @Html.DisplayFor(modelItem => item.IdPredavacNavigation.ImePrezime)
             </td>
             <td style="width:150px">
-                @Html.DisplayFor(modelItem => item.Predbiljezbas)
+                @Html.DisplayFor(modelItem => item.IdSeminar)
             </td>
         </tr>
 }

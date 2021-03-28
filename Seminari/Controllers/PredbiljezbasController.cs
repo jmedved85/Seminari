@@ -37,20 +37,20 @@ namespace Seminari.Controllers
            // var bazaSeminariContext = _context.Predbiljezbas.Include(p => p.IdSeminarNavigation);
            // return View(await bazaSeminariContext.ToListAsync());
 
-            return View(await rezultat.Include(s => s.IdSeminarNavigation).ToListAsync());
+            return View(await rezultat.Include(s => s.IdSeminarNavigation).ToListAsync());            
         }
 
-        public async Task<IActionResult> Status(bool Status)
-        {
-            var rezultat = from r in _context.Predbiljezbas
-                           select r;
+        //public IActionResult Status(bool status)
+        //{
+        //    var rezultat = from r in _context.Predbiljezbas
+        //                   select r;
 
-            rezultat = rezultat.Where(p => p.Status == true
-                    || p.Status == false
-                    || p.Status == null);           
+        //    rezultat = rezultat.Where(p => p.Status == true
+        //            || p.Status == false
+        //            || p.Status == null);
 
-            return RedirectToAction(nameof(Index));
-        }
+        //    return RedirectToAction("Predbiljezbas", "Index", rezultat);
+        //}
 
         // GET: Predbiljezbas/Details/5
         public async Task<IActionResult> Details(int? id)
