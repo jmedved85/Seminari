@@ -23,13 +23,13 @@ namespace Seminari.Controllers
         // GET: Seminars
         public async Task<IActionResult> Index(string pretraga)
         {
-            //var rezultat = from r in _context.Seminars
-            //               select r;
+            var rezultat = from r in _context.Seminars
+                           select r;
 
-            //if (!string.IsNullOrEmpty(pretraga))
-            //{
-            //    rezultat = rezultat.Where(p => p.Naziv.Contains(pretraga));
-            //}
+            if (!string.IsNullOrEmpty(pretraga))
+            {
+                rezultat = rezultat.Where(p => p.Naziv.Contains(pretraga));
+            }
 
             var dbSeminars = await _context.Seminars.ToListAsync();
 
@@ -42,9 +42,9 @@ namespace Seminari.Controllers
             //var bazaSeminariContext = _context.Seminars.Include(s => s.IdPredavacNavigation);
             //return View(await bazaSeminariContext.ToListAsync());
 
-            return View(zbrojPolaznika);
+           // return View(zbrojPolaznika);
 
-            //return View(await rezultat.Include(s => s.IdPredavacNavigation).ToListAsync());
+            return View(await rezultat.Include(s => s.IdPredavacNavigation).ToListAsync());
         }
 
         // GET: Seminars/Details/5
