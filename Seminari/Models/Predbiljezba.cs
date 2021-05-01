@@ -11,23 +11,23 @@ namespace Seminari.Models
     {
         public int IdPredbiljezba { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Molimo unesite ime")]
         [DisplayName("Ime:")]
         public string Ime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Molimo unesite prezime")]
         [DisplayName("Prezime:")]
         public string Prezime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Molimo unesite adresu")]
         [DisplayName("Adresa:")]
         public string Adresa { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Molimo unesite e-mail adresu")]
         [DisplayName("E-mail:")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Molimo unesite broj telefona")]
         [DisplayName("Telefon:")]
         public string Telefon { get; set; }
 

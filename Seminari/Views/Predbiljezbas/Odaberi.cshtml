@@ -1,7 +1,7 @@
 ﻿@model Seminari.Models.Predbiljezba
 
 @{
-    ViewData["Title"] = "Form reservation";    
+    ViewData["Title"] = "Form reservation";
 }
 
 <p>Molimo unesite osobne podatke za predbilježbu na seminar:</p>
@@ -10,38 +10,38 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Odaberi">
+        <form name="odaberiForm" asp-action="Odaberi" method="POST" onsubmit="return porukaSubmit()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <select asp-for="IdSeminar" class="form-control" asp-items="ViewBag.IdSeminar "></select>
-            <br>           
+            <br>
             <div class="form-group">
                 <label asp-for="Ime" class="control-label"></label>
-                <input asp-for="Ime" class="form-control" />
+                <input asp-for="Ime" name="ime" class="form-control" />
                 <span asp-validation-for="Ime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Prezime" class="control-label"></label>
-                <input asp-for="Prezime" class="form-control" />
+                <input asp-for="Prezime" name="prezime" class="form-control" />
                 <span asp-validation-for="Prezime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Adresa" class="control-label"></label>
-                <input asp-for="Adresa" class="form-control" />
+                <input asp-for="Adresa" name="adresa" class="form-control" />
                 <span asp-validation-for="Adresa" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" name="email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Telefon" class="control-label"></label>
-                <input asp-for="Telefon" class="form-control" />
+                <input asp-for="Telefon" name="telefon" class="form-control" />
                 <span asp-validation-for="Telefon" class="text-danger"></span>
             </div>
-        
+
             <div class="form-group">
-                <input type="submit" value="Predbilježi se" class="btn btn-primary" />
+                <input type="submit" value="Predbilježi se" class="btn btn-primary" />                
             </div>
         </form>
     </div>
@@ -51,6 +51,25 @@
     <a asp-action="Index">Natrag</a>
 </div>
 
+<script>
+    function porukaSubmit() {        
+        var ime = document.forms["odaberiForm"]["ime"].value;
+        var prezime = document.forms["odaberiForm"]["prezime"].value;
+        var adresa = document.forms["odaberiForm"]["adresa"].value;
+        var email = document.forms["odaberiForm"]["email"].value;
+        var telefon = document.forms["odaberiForm"]["telefon"].value;
+
+        if ((ime == "") || (prezime == "") || (adresa == "") || (email == "") || (telefon == "")) {
+            alert("Molimo ispunite sva polja");
+            return false;
+        }
+        else {
+            alert("Prijava je zabilježena! Hvala što ste se prijavili na Seminar!");
+        }        
+    }
+</script>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
 }
