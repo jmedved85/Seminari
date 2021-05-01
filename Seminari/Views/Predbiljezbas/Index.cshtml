@@ -10,14 +10,6 @@
     <input type="submit" value="Pretraži" />
 </form>
 
-<form asp-controller="Predbiljezbas" asp-action="Index">
-    <label for="status"><strong>Status: </strong></label>
-    <input type="checkbox" id="status" name="status" value="true" /> <span style="color:green">Prihvaćen</span>
-    <input type="checkbox" id="status" name="status" value="false" /> <span style="color:red">Odbijen</span>
-    <input type="checkbox" id="status" name="status" value="null" /> <span style="color:steelblue">Neobrađen</span>
-    <input type="submit" value="Pretraži" />
-</form>
-
 <br />
 
 <table class="table">
@@ -80,19 +72,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Telefon)
                 </td>
-                <td>                    
-                    @if (item.Status == true) 
-                     {
-                         <span style="color:green">Prihvaćen</span>
-                     }
-                     else if (item.Status == false)
-                     {
-                          <span style="color:red">Odbijen</span>
-                     }
-                     else 
-                     {
-                          <span style="color:steelblue">Neobrađen</span>
-                     }
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <span style="color:green">Prihvaćen</span>
+                    }
+                    else if (item.Status == false)
+                    {
+                        <span style="color:red">Odbijen</span>
+                    }
+                    else
+                    {
+                        <span style="color:steelblue">Neobrađen</span>
+                    }
                 </td>
             </tr>
         }

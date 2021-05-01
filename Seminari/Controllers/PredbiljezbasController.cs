@@ -29,29 +29,17 @@ namespace Seminari.Controllers
 
             if (!string.IsNullOrEmpty(pretraga))
             {
-                rezultat = rezultat.Where(p => p.Ime.Contains(pretraga) 
-                    || p.Prezime.Contains(pretraga) 
-                    || p.IdSeminarNavigation.Naziv.Contains(pretraga));                   
+                rezultat = rezultat.Where(p => p.Ime.Contains(pretraga)
+                    || p.Prezime.Contains(pretraga)
+                    || p.IdSeminarNavigation.Naziv.Contains(pretraga));
             }
 
-           // var bazaSeminariContext = _context.Predbiljezbas.Include(p => p.IdSeminarNavigation);
-           // return View(await bazaSeminariContext.ToListAsync());
+            // var bazaSeminariContext = _context.Predbiljezbas.Include(p => p.IdSeminarNavigation);
+            // return View(await bazaSeminariContext.ToListAsync());
 
             return View(await rezultat.Include(s => s.IdSeminarNavigation).ToListAsync());            
         }
-
-        //public IActionResult Status(bool status)
-        //{
-        //    var rezultat = from r in _context.Predbiljezbas
-        //                   select r;
-
-        //    rezultat = rezultat.Where(p => p.Status == true
-        //            || p.Status == false
-        //            || p.Status == null);
-
-        //    return RedirectToAction("Predbiljezbas", "Index", rezultat);
-        //}
-
+      
         // GET: Predbiljezbas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -95,29 +83,11 @@ namespace Seminari.Controllers
             return View(predbiljezba);
         }
 
-
         // ODABERI
 
         public IActionResult Odaberi(int? id)
         {
-            ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv", id);
-            
-            //var odabir = _context.Predbiljezbas.Where(p => p.IdSeminar == id).FirstOrDefault();
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //ViewBag.Odabir = odabir;
-
-            //var seminar = _context.Seminars                
-            //  .FirstOrDefault(m => m.IdSeminar == id);
-
-            //if (seminar == null)
-            //{
-            //    return NotFound();
-            //}           
-
+            ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv", id);            
 
             return View();         
         }

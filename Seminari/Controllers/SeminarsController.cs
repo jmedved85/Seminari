@@ -36,13 +36,9 @@ namespace Seminari.Controllers
             var zbrojPolaznika = (from x in dbSeminars
                                   join y in _context.Predbiljezbas
                                   on x.IdSeminar equals y.IdSeminar
-                                  orderby x.IdSeminar
+                                  where y.Status == true
+                                  orderby x.IdSeminar                                  
                                   select x.IdSeminar).Count();
-
-            //var bazaSeminariContext = _context.Seminars.Include(s => s.IdPredavacNavigation);
-            //return View(await bazaSeminariContext.ToListAsync());
-
-           // return View(zbrojPolaznika);
 
             return View(await rezultat.Include(s => s.IdPredavacNavigation).ToListAsync());
         }
