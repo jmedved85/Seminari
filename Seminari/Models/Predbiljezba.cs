@@ -32,7 +32,7 @@ namespace Seminari.Models
         public string Telefon { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}", ApplyFormatInEditMode = true)]        
-        [DisplayName("Datum:")]        
+        [DisplayName("Datum prijave:")]        
         public DateTime Datum { get; set; }
 
         [DisplayName("Seminar:")]

@@ -9,7 +9,7 @@
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" asp-action="Odaberi">     
         <form name="odaberiForm" asp-action="Odaberi" method="POST" onsubmit="return porukaSubmit()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <select asp-for="IdSeminar" class="form-control" asp-items="ViewBag.IdSeminar "></select>
