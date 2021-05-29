@@ -53,11 +53,11 @@
 
 <script>
     function porukaSubmit() {        
-        var ime = document.forms["odaberiForm"]["ime"].value;
-        var prezime = document.forms["odaberiForm"]["prezime"].value;
-        var adresa = document.forms["odaberiForm"]["adresa"].value;
-        var email = document.forms["odaberiForm"]["email"].value;
-        var telefon = document.forms["odaberiForm"]["telefon"].value;
+        let ime = document.forms["odaberiForm"]["ime"].value;
+        let prezime = document.forms["odaberiForm"]["prezime"].value;
+        let adresa = document.forms["odaberiForm"]["adresa"].value;
+        let email = document.forms["odaberiForm"]["email"].value;
+        let telefon = document.forms["odaberiForm"]["telefon"].value;
 
         if ((ime == "") || (prezime == "") || (adresa == "") || (email == "") || (telefon == "")) {
             alert("Molimo ispunite sva polja");

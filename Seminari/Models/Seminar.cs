@@ -24,9 +24,8 @@ namespace Seminari.Models
         [DisplayName("Opis:")]
         public string Opis { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd. MM. yyyy.}", ApplyFormatInEditMode = true)]
-        [DisplayName("Datum početka:")]
-        // [DataType(DataType.Date)]
+        [DataType(DataType.Date)]
+        [DisplayName("Datum početka:")]        
         public DateTime? Datum { get; set; }
 
         [DisplayName("Popunjen:")]
